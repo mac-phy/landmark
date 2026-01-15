@@ -19,11 +19,11 @@
             --light-green: #9ccc65;
             --navy: #0d2436;
             --light-bg: #f8f9fa;
-            --accent-yellow: #ffd54f;
+            --accent-yellow: #9ccc65;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family:  Tahoma, Geneva, Verdana, sans-serif;
             overflow-x: hidden;
         }
 
@@ -77,9 +77,9 @@
         }
 
         .btn-success-custom {
-            background: linear-gradient(135deg, var(--primary-green) 0%, var(--light-green) 100%);
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--dark-blue) 100%);
             border: none;
-            color: white;
+            color: var(--light-green);
             padding: 0.6rem 1.5rem;
             border-radius: 50px;
             font-weight: 600;
@@ -97,9 +97,9 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
-            background: linear-gradient(135deg, rgba(26, 58, 82, 0.95) 0%, rgba(13, 36, 54, 0.95) 100%),
+            background: linear-gradient(135deg,white 0%, white 100%),
                         url('static/image/bg1.webp') center/cover;
-            color: white;
+            color: var(--light-green);
             padding: 120px 0 80px;
         }
 
@@ -108,6 +108,7 @@
             font-weight: 700;
             margin-bottom: 1.5rem;
             line-height: 1.2;
+            font-family:  Tahoma, Geneva, Verdana, sans-serif;
         }
 
         .hero-content .highlight {
@@ -154,8 +155,8 @@
         }
 
         .package-card.featured {
-            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--navy) 100%);
-            color: white;
+            background: white;
+            color: var(--dark-blue);
             transform: scale(1.05);
             border-color: var(--light-green);
         }
@@ -173,7 +174,7 @@
         }
 
         .package-card.featured .speed-badge {
-            color: var(--accent-yellow);
+            color: var(--dark-blue);
         }
 
         .package-name {
@@ -220,7 +221,7 @@
 
         .package-card.featured .best-for {
             background: rgba(255, 213, 79, 0.2);
-            color: var(--accent-yellow);
+            color: var(--primary-green);
         }
 
         /* Coverage Section */
@@ -599,7 +600,7 @@
                         <p class="lead">
                             Landmark Network Technologies is a reliable internet service provider delivering fast, stable, and affordable connectivity solutions to homes and businesses. We proudly serve customers in <strong>Embakasi, Nairobi, and Bomet County</strong>, helping individuals and organizations stay connected in today's digital world.
                         </p>
-                        <p>
+                        <p class ="lead">
                             Our services are designed to meet the growing demand for dependable internet—whether for home entertainment, remote work, education, or business operations. With a strong local presence and customer-focused approach, we aim to bridge the digital gap by providing quality internet backed by responsive technical support.
                         </p>
                     </div>
