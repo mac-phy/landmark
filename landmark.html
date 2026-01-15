@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landmark Network Technologies - Reliable Internet in Nairobi & Bomet</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css">
+    <!-- AOS Animation -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-green: #7cb342;
+            --dark-blue: #1a3a52;
+            --light-green: #9ccc65;
+            --navy: #0d2436;
+            --light-bg: #f8f9fa;
+            --accent-yellow: #ffd54f;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            background:white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+        }
+
+        .navbar-scrolled {
+            padding: 0.5rem 0;
+        }
+
+        .navbar-brand {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--dark-blue) !important;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .logo-text .main {
+            font-size: 1.3rem;
+            color: var(--dark-blue);
+        }
+
+        .logo-text .sub {
+            font-size: 0.75rem;
+            color: var(--light-green);
+            letter-spacing: 2px;
+        }
+
+        .navbar-nav .nav-link {
+            color: var(--dark-blue) !important;
+            margin: 0 1rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: var(--light-green) !important;
+        }
+
+        .btn-success-custom {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--light-green) 100%);
+            border: none;
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-success-custom:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(124, 179, 66, 0.4);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(26, 58, 82, 0.95) 0%, rgba(13, 36, 54, 0.95) 100%),
+                        url('static/image/bg1.webp') center/cover;
+            color: white;
+            padding: 120px 0 80px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-content .highlight {
+            color: var(--accent-yellow);
+            font-weight: 800;
+        }
+
+        .hero-content p.lead {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image img {
+            border-radius: 20px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+            width: 100%;
+        }
+
+        /* Pricing Cards */
+        .pricing-section {
+            background: var(--light-bg);
+        }
+
+        .package-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            height: 100%;
+            border: 3px solid transparent;
+            position: relative;
+        }
+
+        .package-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(124, 179, 66, 0.25);
+            border-color: var(--primary-green);
+        }
+
+        .package-card.featured {
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--navy) 100%);
+            color: white;
+            transform: scale(1.05);
+            border-color: var(--light-green);
+        }
+
+        .package-card.featured:hover {
+            transform: scale(1.08);
+        }
+
+        .speed-badge {
+            display: inline-block;
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--dark-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .package-card.featured .speed-badge {
+            color: var(--accent-yellow);
+        }
+
+        .package-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--dark-blue);
+        }
+
+        .package-card.featured .package-name {
+            color: white;
+        }
+
+        .price-tag {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .package-card.featured .price-tag {
+            color: var(--light-green);
+        }
+
+        .price-period {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .package-card.featured .price-period {
+            color: rgba(255,255,255,0.8);
+        }
+
+        .best-for {
+            background: rgba(124, 179, 66, 0.1);
+            padding: 0.8rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            color: var(--dark-blue);
+            font-weight: 500;
+        }
+
+        .package-card.featured .best-for {
+            background: rgba(255, 213, 79, 0.2);
+            color: var(--accent-yellow);
+        }
+
+        /* Coverage Section */
+        .coverage-section {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--light-green) 100%);
+            color: white;
+            padding: 3rem 0;
+        }
+
+        .coverage-section h3 {
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .coverage-list {
+            font-size: 1.3rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 5rem 0;
+        }
+
+        .mission-vision-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            height: 100%;
+            border-left: 5px solid var(--primary-green);
+            transition: all 0.3s;
+        }
+
+        .mission-vision-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 15px 50px rgba(124, 179, 66, 0.2);
+        }
+
+        .mission-vision-card h3 {
+            color: var(--dark-blue);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .mission-vision-card i {
+            font-size: 2.5rem;
+            color: var(--primary-green);
+        }
+
+        /* Features Grid */
+        .feature-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            height: 100%;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(124, 179, 66, 0.2);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--light-green) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: white;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--navy) 100%);
+            color: white;
+            padding: 5rem 0;
+        }
+
+        .contact-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s;
+            height: 100%;
+        }
+
+        .contact-card:hover {
+            background: rgba(124, 179, 66, 0.2);
+            transform: translateY(-10px);
+        }
+
+        .contact-card i {
+            font-size: 3.5rem;
+            color: var(--accent-yellow);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-card h4 {
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card p {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            width: 65px;
+            height: 65px;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 38px;
+            box-shadow: 3px 3px 25px rgba(0,0,0,0.3);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.15);
+            background-color: #128c7e;
+            color: white;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            50% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+        }
+
+        /* Footer */
+        footer {
+            background: var(--navy);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--light-green);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .package-card.featured {
+                transform: scale(1);
+            }
+
+            .coverage-list {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                
+                    <img src="static/image/logo.png" alt="Landmark Network Logo" >
+                <!-- <div class="logo-text">
+                    <span class="main">Landmark Network</span>
+                    <span class="sub">TECHNOLOGIES</span>
+                    <img src="static/image/logo.png" alt="Landmark Network Logo">
+                </div> -->
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#packages">Packages</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item ms-3">
+                        <a href="https://wa.me/254719465540" target="_blank" class="btn btn-success-custom">
+                            <i class="bi bi-whatsapp me-2"></i>Get Started
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content" data-aos="fade-right">
+                    <h1>Keep <span class="highlight">Cozy Nights</span><br>with Family & Friends</h1>
+                    <p class="lead">Stay connected with fast, reliable internet from as low as <strong>Ksh 1000</strong> and enjoy our 4 Mbps Student Package.</p>
+                    <div class="d-flex gap-3 flex-wrap">
+                        <a href="#packages" class="btn btn-success-custom btn-lg">
+                            <i class="bi bi-gift me-2"></i>View Packages
+                        </a>
+                        <a href="tel:+254751844828" class="btn btn-outline-light btn-lg">
+                            <i class="bi bi-telephone me-2"></i>Call Support
+                        </a>
+                    </div>
+                    <div class="mt-4 pt-3">
+                        <p class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Fast & Reliable</p>
+                        <p class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Affordable Pricing</p>
+                        <p class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>24/7 Support</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 hero-image mt-5 mt-lg-0" data-aos="fade-left">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800" alt="Family watching Netflix" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coverage Banner -->
+    <section class="coverage-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-3 text-center text-md-start mb-3 mb-md-0">
+                    <h3><i class="bi bi-geo-alt-fill me-2"></i>Coverage Areas:</h3>
+                </div>
+                <div class="col-md-9">
+                    <div class="coverage-list text-center text-md-start">
+                        PIPELINE • FEDHA • KWA NDEGE • JUAKALI • ASTROL UTAWALA • MLOLONGO
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages Section -->
+    <section id="packages" class="pricing-section py-5">
+        <div class="container py-5">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="display-4 fw-bold" style="color: var(--dark-blue);">Choose Your Perfect Package</h2>
+                <p class="lead text-muted">Affordable internet plans for every need</p>
+            </div>
+            <div class="row g-4">
+                <!-- 4 Mbps Package -->
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="package-card">
+                        <div class="speed-badge">4 <small style="font-size: 1.5rem;">Mbps</small></div>
+                        <div class="package-name">Student Package</div>
+                        <div class="best-for">
+                            <i class="bi bi-mortarboard-fill me-2"></i>Perfect for Students
+                        </div>
+                        <div class="price-tag">Ksh 1,000</div>
+                        <div class="price-period">per month</div>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Ideal for browsing</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Social media</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Light streaming</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Email & research</li>
+                        </ul>
+                        <a href="https://wa.me/254719465540?text=Hi, I'm interested in the 4 Mbps package" target="_blank" class="btn btn-success-custom w-100 mt-3">
+                            Subscribe Now
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 6 Mbps Package -->
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="package-card">
+                        <div class="speed-badge">6 <small style="font-size: 1.5rem;">Mbps</small></div>
+                        <div class="package-name">Basic Home</div>
+                        <div class="best-for">
+                            <i class="bi bi-house-fill me-2"></i>Small Households
+                        </div>
+                        <div class="price-tag">Ksh 1,500</div>
+                        <div class="price-period">per month</div>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>HD video streaming</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Video calls</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Remote work</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Multiple devices</li>
+                        </ul>
+                        <a href="https://wa.me/254719465540?text=Hi, I'm interested in the 6 Mbps package" target="_blank" class="btn btn-success-custom w-100 mt-3">
+                            Subscribe Now
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 8 Mbps Package - Featured -->
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="package-card featured">
+                        <div class="badge bg-warning text-dark mb-3 px-3 py-2">
+                            <i class="bi bi-star-fill me-1"></i>MOST POPULAR
+                        </div>
+                        <div class="speed-badge">8 <small style="font-size: 1.5rem;">Mbps</small></div>
+                        <div class="package-name">Family Plus</div>
+                        <div class="best-for">
+                            <i class="bi bi-people-fill me-2"></i>Perfect for Families
+                        </div>
+                        <div class="price-tag">Ksh 2,000</div>
+                        <div class="price-period">per month</div>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-warning me-2"></i>4K streaming</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-warning me-2"></i>Online gaming</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-warning me-2"></i>Smart home devices</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-warning me-2"></i>Work from home</li>
+                        </ul>
+                        <a href="https://wa.me/254719465540?text=Hi, I'm interested in the 8 Mbps package" target="_blank" class="btn btn-success-custom w-100 mt-3">
+                            Subscribe Now
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 12 Mbps Package -->
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="package-card">
+                        <div class="speed-badge">12 <small style="font-size: 1.5rem;">Mbps</small></div>
+                        <div class="package-name">Premium</div>
+                        <div class="best-for">
+                            <i class="bi bi-lightning-fill me-2"></i>Power Users & Businesses
+                        </div>
+                        <div class="price-tag">Ksh 3,000</div>
+                        <div class="price-period">per month</div>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Ultra-fast speeds</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Large file transfers</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Multiple users</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Business operations</li>
+                        </ul>
+                        <a href="https://wa.me/254719465540?text=Hi, I'm interested in the 12 Mbps package" target="_blank" class="btn btn-success-custom w-100 mt-3">
+                            Subscribe Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section bg-light">
+        <div class="container py-5">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="display-4 fw-bold" style="color: var(--dark-blue);">About Us</h2>
+                <p class="lead text-muted">Your trusted internet service provider in Nairobi & Bomet</p>
+            </div>
+            
+            <div class="row mb-5">
+                <div class="col-lg-12" data-aos="fade-up">
+                    <div class="bg-white p-4 rounded-3 shadow-sm">
+                        <p class="lead">
+                            Landmark Network Technologies is a reliable internet service provider delivering fast, stable, and affordable connectivity solutions to homes and businesses. We proudly serve customers in <strong>Embakasi, Nairobi, and Bomet County</strong>, helping individuals and organizations stay connected in today's digital world.
+                        </p>
+                        <p>
+                            Our services are designed to meet the growing demand for dependable internet—whether for home entertainment, remote work, education, or business operations. With a strong local presence and customer-focused approach, we aim to bridge the digital gap by providing quality internet backed by responsive technical support.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="mission-vision-card">
+                        <h3><i class="bi bi-bullseye"></i>Our Mission</h3>
+                        <p class="mb-0">
+                            To provide reliable, high-speed, and affordable internet solutions that empower homes and businesses, while delivering excellent customer service and innovative networking solutions within our service regions.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="mission-vision-card">
+                        <h3><i class="bi bi-eye"></i>Our Vision</h3>
+                        <p class="mb-0">
+                            To become a trusted and leading internet service provider in Kenya, known for quality connectivity, technological innovation, and meaningful impact on communities through digital access.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Why Choose Us -->
+            <div class="mt-5 pt-5">
+                <h3 class="text-center mb-4 fw-bold" style="color: var(--dark-blue);">Why Choose Landmark Network Technologies?</h3>
+                <div class="row g-4">
+                    <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="feature-item text-center">
+                            <div class="feature-icon">
+                                <i class="bi bi-lightning-charge-fill"></i>
+                            </div>
+                            <h5 style="color: var(--dark-blue);">Fast & Reliable</h5>
+                            <p class="text-muted small">Stable connectivity with minimal downtime</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="feature-item text-center">
+                            <div class="feature-icon">
+                                <i class="bi bi-wallet2"></i>
+                            </div>
+                            <h5 style="color: var(--dark-blue);">Affordable Pricing</h5>
+                            <p class="text-muted small">Plans starting from just Ksh 1,000/month</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="feature-item text-center">
+                            <div class="feature-icon">
+                                <i class="bi bi-headset"></i>
+                            </div>
+                            <h5 style="color: var(--dark-blue);">24/7 Support</h5>
+                            <p class="text-muted small">Always here to help via phone or WhatsApp</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="feature-item text-center">
+                            <div class="feature-icon">
+                                <i class="bi bi-geo-alt-fill"></i>
+                            </div>
+                            <h5 style="color: var(--dark-blue);">Local Presence</h5>
+                            <p class="text-muted small">Serving Embakasi, Nairobi & Bomet County</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="display-4 fw-bold">Get In Touch</h2>
+                <p class="lead">WhatsApp us or call us - We're here to help!</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="contact-card">
+                        <i class="bi bi-whatsapp"></i>
+                        <h4>Sales Department</h4>
+                        <p>New Connections & Packages</p>
+                        <a href="https://wa.me/254719465540" target="_blank" class="btn btn-success-custom btn-lg me-2 mb-2">
+                            <i class="bi bi-whatsapp me-2"></i>Chat on WhatsApp
+                        </a>
+                        <a href="tel:+254719465540" class="btn btn-outline-light btn-lg mb-2">
+                            <i class="bi bi-telephone me-2"></i>0719 465 540
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="contact-card">
+                        <i class="bi bi-headset"></i>
+                        <h4>Technical Support</h4>
+                        <p>Issues, Queries & Assistance</p>
+                        <a href="https://wa.me/254751844828" target="_blank" class="btn btn-success-custom btn-lg me-2 mb-2">
+                            <i class="bi bi-whatsapp me-2"></i>Chat on WhatsApp
+                        </a>
+                        <a href="tel:+254751844828" class="btn btn-outline-light btn-lg mb-2">
+                            <i class="bi bi-telephone me-2"></i>0751 844 828
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-5" data-aos="fade-up">
+                <h3 class="mb-4">Visit Our Service Centers</h3>
+                <div class="row justify-content-center">
+                    <div class="col-md-4 mb-3">
+                        <div class="p-3 bg-white bg-opacity-10 rounded-3">
+                            <i class="bi bi-geo-alt-fill fs-2 text-warning"></i>
+                            <h5 class="mt-2">Embakasi, Nairobi</h5>
+                            <p class="small mb-0">Multiple coverage zones</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="p-3 bg-white bg-opacity-10 rounded-3">
+                            <i class="bi bi-geo-alt-fill fs-2 text-warning"></i>
+                            <h5 class="mt-2">Bomet County</h5>
+                            <p class="small mb-0">Expanding coverage</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="logo-text mb-3">
+                        <span class="main fs-4">Landmark Network</span><br>
+                        <span class="sub">TECHNOLOGIES</span>
+                    </div>
+                    <p class="text-muted">Connecting Kenya with reliable, fast, and affordable internet solutions for homes and businesses.</p>
+                    <div class="mt-3">
+                        <a href="#" class="text-white me-3 fs-4"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-white me-3 fs-4"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="text-white me-3 fs-4"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="text-white fs-4"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 footer-links">
+                    <h6 class="mb-3 text-white">Quick Links</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#home">Home</a></li>
+                        <li class="mb-2"><a href="#packages">Packages</a></li>
+                        <li class="mb-2"><a href="#about">About Us</a></li>
+                        <li class="mb-2"><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-4 mb-4 footer-links">
+                    <h6 class="mb-3 text-white">Our Packages</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#packages">4 Mbps - Ksh 1,000</a></li>
+                        <li class="mb-2"><a href="#packages">6 Mbps - Ksh 1,500</a></li>
+                        <li class="mb-2"><a href="#packages">8 Mbps - Ksh 2,000</a></li>
+                        <li class="mb-2"><a href="#packages">12 Mbps - Ksh 3,000</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-4 mb-4">
+                    <h6 class="mb-3 text-white">Coverage Areas</h6>
+                    <p class="text">
+                        <i class="bi bi-geo-alt-fill text-success me-2"></i>Pipeline<br>
+                        <i class="bi bi-geo-alt-fill text-success me-2"></i>Fedha<br>
+                        <i class="bi bi-geo-alt-fill text-success me-2"></i>Kwa Ndege<br>
+                        <i class="bi bi-geo-alt-fill text-success me-2"></i>Juakali<br>
+                        <i class="bi bi-geo-alt-fill text-success me-2"></i>Astrol Utawala<br>
+                        <i class="bi bi-geo-alt-fill text-success me-2"></i>Mlolongo
+                    </p>
+                </div>
+            </div>
+            <hr class="my-4" style="opacity: 0.1;">
+            <div class="text-center py-3">
+                <p class="mb-1 text-white-50">&copy; 2025 Landmark Network Technologies. All rights reserved.</p>
+                <p class="small text-muted mb-0">Fast • Reliable • Affordable Internet Solutions</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/254719465540" target="_blank" class="whatsapp-float" title="Chat on WhatsApp">
+        <i class="bi bi-whatsapp"></i>
+    </a>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Animation JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('navbar-scrolled');
+            } else {
+                navbar.classList.remove('navbar-scrolled');
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
